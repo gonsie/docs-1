@@ -1,0 +1,123 @@
+'\" t
+.\"     Title: flux_core_version
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.10
+.\"      Date: 2020-01-10
+.\"    Manual: Flux Programming Reference
+.\"    Source: flux-core
+.\"  Language: English
+.\"
+.TH "FLUX_CORE_VERSION" "3" "2020-01-10" "flux\-core" "Flux Programming Reference"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+flux_core_version, flux_core_version_string \- get flux\-core version
+.SH "SYNOPSIS"
+.sp
+.if n .RS 4
+.nf
+#include <flux/core.h>
+.fi
+.if n .RE
+.sp
+.if n .RS 4
+.nf
+int flux_core_version (int *major, int *minor, int *patch);
+.fi
+.if n .RE
+.sp
+.if n .RS 4
+.nf
+const char *flux_core_version_string (void);
+.fi
+.if n .RE
+.SH "DESCRIPTION"
+.sp
+flux\-core defines several macros and functions to let API users determine
+the version they are working with.  A version has three components
+(\fImajor\fP, \fIminor\fP, \fIpatch\fP), accessible with the following macros:
+.sp
+FLUX_CORE_VERSION_MAJOR
+.RS 4
+(integer) incremented when there are incompatible API changes
+.RE
+.sp
+FLUX_CORE_VERSION_MINOR
+.RS 4
+(integer) incremented when functionality is added in a backwards\-compatible
+manner
+.RE
+.sp
+FLUX_CORE_VERSION_PATCH
+.RS 4
+(integer) incremented when bug fixes are added in a backwards\-compatible manner
+.RE
+.sp
+These definitions conform to the \fIsemantic versioning\fP standard (see below).
+In addition, the following convenience macros are available:
+.sp
+FLUX_CORE_VERSION_HEX
+.RS 4
+(hex) the three versions combined into a three\-byte integer value,
+useful for comparing versions with \fI<\fP, \fI=\fP, and \fI>\fP operators.
+.RE
+.sp
+FLUX_CORE_VERSION_STRING
+.RS 4
+(string) the three versions above separated by periods, with optional
+\f(CRgit\-describe(1)\fP suffix preceded by a hyphen, if the version is a
+development snapshot.
+.RE
+.sp
+Note that major version zero (0.y.z) is for initial development.
+Under version zero, the public API should not be considered stable.
+.sp
+Functions are also available to access the same values.  While the header
+macros tell what version of flux\-core your program was compiled against,
+the functions tell what version your program is dynamically linked with.
+.sp
+\f(CRflux_core_version()\fP sets \fImajor\fP, \fIminor\fP, and \fIpatch\fP to the values of
+the macros above.  If any parameters are NULL, no assignment is attempted.
+.sp
+\f(CRflux_core_version_string()\fP returns the string value.
+.SH "RETURN VALUE"
+.sp
+\f(CRflux_core_version ()\fP returns the hex version.
+.sp
+\f(CRflux_core_version_string ()\fP returns the version string
+.SH "ERRORS"
+.sp
+These functions cannot fail.
+.SH "AUTHOR"
+.sp
+This page is maintained by the Flux community.
+.SH "RESOURCES"
+.sp
+Github: \c
+.URL "http://github.com/flux\-framework" "" ""
+.SH "COPYRIGHT"
+.sp
+Copyright 2014 Lawrence Livermore National Security, LLC
+and Flux developers.
+.sp
+SPDX\-License\-Identifier: LGPL\-3.0
+.SH "SEE ALSO"
+.sp
+semver.org[Semantic Versioning 2.0.0]
