@@ -12,11 +12,22 @@ Welcome to Flux's documentation!
 ================================
 
 .. toctree::
-   :maxdepth: 3
-   :caption: Contents
+   :maxdepth: 2
+   :caption: Getting Started with Flux
 
    quickstart
    contributing
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Coding with Flux
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Flux API Documentation
+
 
 Indices and tables
 ==================
